@@ -17,5 +17,11 @@ Route::get('/', function () {
 
 Route::get('/pdf','PdfController@index');
 
+Route::get('/upload', 'UploadController@index')->name('upload');
+Route::get('/create', 'UploadController@create')->name('create');
+Route::post('/store', 'UploadController@store')->name('store');
+Route::get('{upload}/show', 'UploadController@show')->name('show');
+Route::delete('{upload}', 'UploadController@destroy')->name('delete');
+
 
 

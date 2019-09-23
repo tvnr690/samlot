@@ -10,21 +10,17 @@ class PdfController extends Controller
 {
     public function index()
     {
-        // The relative or absolute path to the PDF file
-        // $pdfFilePath = $this->get('kernel')->getRootDir() . '/../web/example.pdf';
-
-        // Create an instance of the PDFParser
         $PDFParser = new Parser();
-
-        // Create an instance of the PDF with the parseFile method of the parser
-        // this method expects as first argument the path to the PDF file
-        $pdf = $PDFParser->parseFile('test.pdf');
-
-        // Extract ALL text with the getText method
-        $text = $pdf->getText();
-
-        // dd($text);
-        // Send the text as response in the controller
+        $pdf = $PDFParser->parseFile('sample.pdf');
+        $pages  = $pdf->getPages();
+        $totalPages = count($pages);
+        $currentPage = 1;
+        $text = "";
+        foreach ($pages as $page) {
+            $text .= "<h3>Page $currentPage/$totalPages</h3> </br>";
+            $text .= $page->getText();
+            $currentPage++;
+        }
 
         return view('pdf')->with('text', $text);
         // return view('pdf')->compact('text', $text);
