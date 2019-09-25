@@ -26,8 +26,18 @@
     <section>
         <div class="contain p-5">
             {{-- {{ $text }} --}}
-            <?php 
-              echo $text;
+            <?php
+            //   echo $text;
+              echo "<pre>";
+
+                $arr = explode(" ", $text);
+
+            // print_r($arr)
+                $ar6 = $arr[6];
+                $arr2 = explode("cell", $ar6);
+                print_r($arr2);
+
+                // echo $ar6;
             ?>
             {{-- echo $text; --}}
 
